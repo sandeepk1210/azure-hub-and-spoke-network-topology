@@ -12,8 +12,8 @@ resource "azurerm_windows_virtual_machine" "vm" {
   ]
 
   os_disk {
-    caching                = "ReadWrite"
-    storage_account_type   = "Standard_LRS"
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
   }
 
   source_image_reference {
@@ -38,7 +38,7 @@ resource "azurerm_network_interface" "nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.default_subnet.id
+    subnet_id                     = azurerm_subnet.hub_vnet_subnet["default"].id
     private_ip_address_allocation = "Dynamic"
   }
 }
